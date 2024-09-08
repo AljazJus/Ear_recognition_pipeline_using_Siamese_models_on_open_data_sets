@@ -24,11 +24,11 @@ from siamese import SiameseNetwork
 from siamese_dataset2 import SiameseDataset
 
 
-save_path="/home/aljazjustin/siamese_model/model_Saved/Color_ALL_DATA4"
+save_path="save_path"
 
-train_files="/home/aljazjustin/datasets/NEW/final data/train"
-val_files="/home/aljazjustin/datasets/NEW/final data/val"
-test_files="/home/aljazjustin/datasets/NEW/final data/test"
+train_files="path/to/train_set"
+val_files="path/to/val_set"
+test_files="path/to/test_set"
 
 if not os.path.exists(save_path):
     # If not, create the directory

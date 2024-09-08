@@ -14,10 +14,10 @@ from torchvision.models import efficientnet_b0
 import torch.nn as nn
 import time
 # model
-yolo_model = YOLO("/Users/aljazjustin/Siht/Praksa/Ear-based-recognition/Yolov8-models/YoloV8_IBB_detection/weights/best.pt")
+yolo_model = YOLO("/path/to/yolo/weights.pt")
 
 
-model_path="/Users/aljazjustin/Siht/Praksa/compear_model/models/best_model_loss_new.pth"
+model_path="/path/to/siamese/model.pth"
 checkpoint = torch.load(model_path, map_location=torch.device('cpu'))
 # Load state_dict into classifier
 model_base = efficientnet_b0()
@@ -30,13 +30,13 @@ siamses_model.classifier.load_state_dict(checkpoint['linear_state_dict'])
 _=siamses_model.eval()
 
 
-embeddings_path = "/Users/aljazjustin/Siht/Praksa/Ear-based-recognition/Recognition/ears_recognition/"
+embeddings_path = "path/to/embeddings"
 
 # try:
 #     names,ears_tensors= iv.load_embeddings_from_file(embeddings_path)
 # except:
-images="/Users/aljazjustin/Siht/Praksa/Ear-based-recognition/Recognition/ears_recognition"
-names="/Users/aljazjustin/Siht/Praksa/Ear-based-recognition/Recognition/ears_recognition/names.csv"
+images="/path/to/images"
+names="path/to/names.csv"
 ears_tensors, names = iv.images2vectors(images,names,siamses_model)
 iv.save_embeddings_to_file(ears_tensors,names, embeddings_path)
 
